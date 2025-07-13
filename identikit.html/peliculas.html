@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mis Películas Favoritas</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1, h2 {
+      text-align: center;
+    }
+
+    nav {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 10px 20px;
+      margin-bottom: 30px;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #0077cc;
+    }
+
+    .menu-peliculas {
+      max-width: 600px;
+      margin: 0 auto 20px;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .menu-peliculas ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .menu-peliculas li {
+      margin: 10px 0;
+    }
+
+    .menu-peliculas a {
+      text-decoration: none;
+      color: #0077cc;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .menu-peliculas a:hover {
+      color: #004c8c;
+    }
+
+    .pelicula {
+      display: none;
+      max-width: 800px;
+      margin: 30px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .pelicula:target {
+      display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 450px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .volver {
+      display: block;
+      margin-top: 15px;
+      text-align: right;
+    }
+
+    .volver a {
+      text-decoration: none;
+      color: #777;
+      font-size: 14px;
+    }
+
+    .volver a:hover {
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎬 Mis Películas Favoritas</h1>
+
+  <nav>
+    <ul>
+      <li><a href="principal.html">Inicio</a></li>
+      <li><a href="table.html">Tabla</a></li>
+      <li><a href="trivia.html">Trivia</a></li>
+      <li><a href="peliculas.html">Playlist</a></li>
+    </ul>
+  </nav>
+
+  <div class="menu-peliculas">
+    <h2>Elegí una película para ver su tráiler</h2>
+    <ul>
+      <li><a href="#el-padrino">El padrino</a></li>
+      <li><a href="#el-senor-de-los-anillos">El señor de los anillos</a></li>
+      <li><a href="#batman">The Dark Knight</a></li>
+    </ul>
+  </div>
+
+  <div id="el-padrino" class="pelicula">
+    <h2>El Padrino</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iOyQx7MXaz0?si=trJuKJjCskQLflP5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="volver"><a href="#">⬆ Volver al menú</a></div>
+  </div>
+
+  <div id="el-senor-de-los-anillos" class="pelicula">
+    <h2>El señor de los anillos</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/iFOucwxKRFE?si=P-xR5hXE0J2Twwlw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="volver"><a href="#">⬆ Volver al menú</a></div>
+  </div>
+
+  <div id="batman" class="pelicula">
+    <h2>The Dark Knight</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/LDG9bisJEaI?si=DqjBCSDna1GydK7p" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="volver"><a href="#">⬆ Volver al menú</a></div>
+  </div>
+
+</body>
+</html>

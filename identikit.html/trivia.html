@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Batman Trivia - Trilogía de Nolan</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #f5f5f5;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      color: yellow;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #e0e0e0;
+    }
+
+    nav {
+      background-color: #000;
+      padding: 15px 0;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    nav li {
+      display: inline;
+      margin-right: 30px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .pregunta {
+      font-weight: bold;
+      margin: 25px 0 10px;
+      font-size: 1.1em;
+      color: #ffffff;
+    }
+
+    .batarang-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .batarang {
+      width: 120px;
+      height: 120px;
+      background-image: url("batarang.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      color: white;
+      font-weight: bold;
+      font-size: 0.9em;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 10px;
+      text-align: center;
+      border: 2px solid #444;
+      border-radius: 10px;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .batarang:hover {
+      transform: scale(1.05);
+      border-color: #facc15;
+    }
+
+    .batarang.reveal::after {
+      content: attr(data-actor) "\A" attr(data-result);
+      white-space: pre;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.8);
+      font-size: 0.85em;
+      padding: 10px;
+      border-radius: 10px;
+      text-align: center;
+    }
+
+    .batarang.reveal[data-result="Correcto"]::after {
+      background-color: #22c55e;
+      color: black;
+    }
+
+    .batarang.reveal[data-result="Incorrecto"]::after {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    .batarang.disabled {
+      pointer-events: none;
+      opacity: 0.6;
+    }
+
+    #resultado {
+      font-size: 1.5em;
+      margin-top: 30px;
+      color: #facc15;
+    }
+
+    #reiniciar {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #facc15;
+      color: black;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+    }
+
+    #reiniciar:hover {
+      background-color: #eab308;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="principal.html">Inicio</a></li>
+      <li><a href="table.html">Tabla</a></li>
+      <li><a href="trivia.html">Trivia</a></li>
+      <li><a href="peliculas.html">Películas</a></li>
+    </ul>
+  </nav>
+
+  <h1>Batman Trivia</h1>
+  <p>¿Quién interpretó a cada personaje?</p>
+
+  <div id="quiz-container">
+    <!-- Preguntas y opciones -->
+    <div class="pregunta">¿Quién interpretó a Batman?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Christian Bale', true)">Christian Bale</div>
+      <div class="batarang" onclick="revelar(this, 'Ben Affleck', false)">Ben Affleck</div>
+      <div class="batarang" onclick="revelar(this, 'Robert Pattinson', false)">Robert Pattinson</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó al Joker?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Joaquin Phoenix', false)">Joaquin Phoenix</div>
+      <div class="batarang" onclick="revelar(this, 'Heath Ledger', true)">Heath Ledger</div>
+      <div class="batarang" onclick="revelar(this, 'Jared Leto', false)">Jared Leto</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Alfred?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Michael Caine', true)">Michael Caine</div>
+      <div class="batarang" onclick="revelar(this, 'Jeremy Irons', false)">Jeremy Irons</div>
+      <div class="batarang" onclick="revelar(this, 'Andy Serkis', false)">Andy Serkis</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a James Gordon?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Gary Oldman', true)">Gary Oldman</div>
+      <div class="batarang" onclick="revelar(this, 'J.K. Simmons', false)">J.K. Simmons</div>
+      <div class="batarang" onclick="revelar(this, 'Jeffrey Wright', false)">Jeffrey Wright</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Harvey Dent?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Aaron Eckhart', true)">Aaron Eckhart</div>
+      <div class="batarang" onclick="revelar(this, 'Tommy Lee Jones', false)">Tommy Lee Jones</div>
+      <div class="batarang" onclick="revelar(this, 'Billy Dee Williams', false)">Billy Dee Williams</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Rachel Dawes?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Katie Holmes', false)">Katie Holmes</div>
+      <div class="batarang" onclick="revelar(this, 'Maggie Gyllenhaal', true)">Maggie Gyllenhaal</div>
+      <div class="batarang" onclick="revelar(this, 'Anne Hathaway', false)">Anne Hathaway</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Lucius Fox?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Morgan Freeman', true)">Morgan Freeman</div>
+      <div class="batarang" onclick="revelar(this, 'Laurence Fishburne', false)">Laurence Fishburne</div>
+      <div class="batarang" onclick="revelar(this, 'Denzel Washington', false)">Denzel Washington</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Bane?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Tom Hardy', true)">Tom Hardy</div>
+      <div class="batarang" onclick="revelar(this, 'Dave Bautista', false)">Dave Bautista</div>
+      <div class="batarang" onclick="revelar(this, 'Gerard Butler', false)">Gerard Butler</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Selina Kyle?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Anne Hathaway', true)">Anne Hathaway</div>
+      <div class="batarang" onclick="revelar(this, 'Zoë Kravitz', false)">Zoë Kravitz</div>
+      <div class="batarang" onclick="revelar(this, 'Michelle Pfeiffer', false)">Michelle Pfeiffer</div>
+    </div>
+
+    <div class="pregunta">¿Quién interpretó a Ra's al Ghul?</div>
+    <div class="batarang-container">
+      <div class="batarang" onclick="revelar(this, 'Liam Neeson', true)">Liam Neeson</div>
+      <div class="batarang" onclick="revelar(this, 'Ken Watanabe', false)">Ken Watanabe</div>
+      <div class="batarang" onclick="revelar(this, 'Takeshi Kitano', false)">Takeshi Kitano</div>
+    </div>
+  </div>
+
+  <div id="resultado"></div>
+  <button id="reiniciar" onclick="location.reload()">Reiniciar</button>
+
+  <script>
+    let respuestasCorrectas = 0;
+    let totalPreguntas = 10;
+    let respondidas = 0;
+
+    function revelar(elemento, actor, correcto) {
+      if (elemento.classList.contains('reveal')) return;
+
+      elemento.setAttribute("data-actor", actor);
+      elemento.setAttribute("data-result", correcto ? "Correcto" : "Incorrecto");
+      elemento.classList.add("reveal");
+
+      const hermanos = elemento.parentElement.children;
+      for (let el of hermanos) {
+        el.classList.add("disabled");
+      }
+
+      if (correcto) respuestasCorrectas++;
+      respondidas++;
+
+      if (respondidas === totalPreguntas) {
+        document.getElementById("resultado").textContent =
+          `Obtuviste ${respuestasCorrectas} de ${totalPreguntas} respuestas correctas.`;
+      }
+    }
+  </script>
+</body>
+</html>
