@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Juanse</div>
+    <ul class="nav-links" style="margin-left:auto;">
+      <li><a href="about.html" id="about-link">Sobre mí</a></li>
+      <li><a href="#" id="contact-link">Contacto</a></li>
+    </ul>
+  </nav>
+  <header class="hero" id="hero-section">
+    <h1 id="main-title">¡Hola! Soy Juanse</h1>
+    <p class="subtitle">Soy estudiante de UADE</p>
+    <button id="ver-proyectos-btn">Ver Proyectos</button>
+  </header>
+
+  <section id="projects" class="projects-section" style="display:none;">
+    <button id="inicio-btn" class="volver-btn" style="margin-bottom: 24px;">Inicio</button>
+    <h2>Mis Proyectos</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Calculadora</h3>
+        <p>Calculadora para operaciones matemáticas simples.</p>
+        <a href="proyecto.html" class="project-link">Ir a la Calculadora</a>
+      </div>
+      <div class="project-card">
+        <h3>Juego</h3>
+        <p>Entra y distensa la semana con este juego.</p>
+        <a href="juego.html" class="project-link">Ir al Juego</a>
+      </div>
+      <div class="project-card">
+        <h3>Botonera</h3>
+        <p>Revivi la nostalgia al escuchar esta botonera de juegos retro</p>
+        <a href="botonera.html" class="project-link">Ir a la Botonera</a>
+      </div>
+    </div>
+  </section>
+  <script src="main.js"></script>
+</body>
+</html>

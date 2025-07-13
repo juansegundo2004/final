@@ -1,0 +1,405 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(120deg, #66a6ff 0%, #f4f6f8 100%);
+  background-size: 200% 200%;
+  animation: gradientBG 8s ease-in-out infinite;
+  color: #222;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(26,34,51,0.97);
+  padding: 0 40px;
+  height: 60px;
+  box-shadow: 0 4px 16px rgba(102,166,255,0.10);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+}
+
+.logo {
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #e0e6ed;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: #66a6ff;
+}
+
+.hero {
+  text-align: center;
+  padding: 90px 20px 60px 20px;
+  background: #fff;
+  border-radius: 0 0 32px 32px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+  margin-bottom: 30px;
+}
+
+#main-title {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+  color: #1a2233;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 16px #66a6ff33;
+  animation: titlePop 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+@keyframes titlePop {
+  0% {transform: scale(0.8) translateY(-30px); opacity: 0;}
+  80% {transform: scale(1.05) translateY(10px); opacity: 1;}
+  100% {transform: scale(1) translateY(0); opacity: 1;}
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #4a5568;
+}
+
+button, .project-link, .volver-btn {
+  position: relative;
+  overflow: hidden;
+  padding: 12px 36px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg, #1a2233 60%, #66a6ff 100%);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(102,166,255,0.08);
+  transition: background 0.3s, color 0.3s;
+}
+button::after, .project-link::after, .volver-btn::after {
+  content: "";
+  position: absolute;
+  left: -75%;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+  transform: skewX(-25deg);
+  transition: left 0.5s;
+  pointer-events: none;
+}
+button:hover::after, .project-link:hover::after, .volver-btn:hover::after {
+  left: 120%;
+}
+
+button:hover, .volver-btn:hover {
+  background: linear-gradient(90deg, #66a6ff 60%, #1a2233 100%);
+  color: #222;
+}
+
+.about-section, .contact-section {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+.about-section.hidden {
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  padding: 0 32px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.contact-section {
+  margin-top: 20px;
+}
+
+.projects-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.projects-grid {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(102,166,255,0.10);
+  padding: 28px 20px;
+  width: 260px;
+  text-align: left;
+  transition: transform 0.25s, box-shadow 0.25s;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+.project-card:hover {
+  transform: translateY(-10px) scale(1.04) rotate(-1deg);
+  box-shadow: 0 8px 32px rgba(102,166,255,0.18);
+  border: 2px solid #66a6ff;
+}
+
+.project-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: #1a2233;
+  background: #66a6ff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.project-link:hover {
+  background: #1a2233;
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+#contact-form label {
+  margin-bottom: 4px;
+}
+
+#contact-form input {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 220px;
+}
+
+#contact-form button {
+  padding: 10px 28px;
+  border: none;
+  border-radius: 20px;
+  background: #66a6ff;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#contact-form button:hover {
+  background: #1a2233;
+}
+
+.calc-container {
+  max-width: 340px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 32px 24px 24px 24px;
+  text-align: center;
+  color: #222;
+}
+.calc-title {
+  margin-bottom: 18px;
+  color: #1a2233;
+}
+#calc-display {
+  width: 90%;
+  margin-bottom: 14px;
+  padding: 10px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  text-align: right;
+  background: #f4f6f8;
+  color: #111;
+}
+.calc-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 60px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 10px;
+}
+.calc-buttons button {
+  padding: 14px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 6px;
+  background: #e0e6ed;
+  color: #222;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.calc-buttons button:hover {
+  background: #66a6ff;
+  color: #fff;
+}
+.volver-btn {
+  margin-top: 24px;
+  padding: 10px 28px;
+  border: none;
+  border-radius: 20px;
+  background: #66a6ff;
+  color: #fff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.volver-btn:hover {
+  background: #1a2233;
+  color: #fff;
+}
+
+.game-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #070707;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 32px 24px 24px 24px;
+  text-align: center;
+  position: relative;
+  min-height: 300px;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: #fff;
+}
+#square {
+  width: 50px;
+  height: 50px;
+  background: #fbfafa;
+  position: absolute;
+  top: 120px;
+  left: 120px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: top 0.2s, left 0.2s;
+}
+#mensaje {
+  margin-top: 20px;
+  font-size: 1.1rem;
+  color: #d32f2f;
+  font-weight: bold;
+}
+.botonera-container {
+  max-width: 400px;
+  margin: 60px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 32px 24px 24px 24px;
+  text-align: center;
+}
+.botonera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.botonera button {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 32px; /* Puntas bien redondeadas */
+  box-shadow: none;
+  transition: transform 0.2s;
+  overflow: hidden; /* Para que la imagen respete el borde redondeado */
+}
+.botonera button:hover,
+.botonera button:focus {
+  transform: scale(1.12);
+}
+.botonera button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  border-radius: 32px; /* Imagen también redondeada */
+}
+
+/* Solo el botón de Mario: fondo blanco, sin borde, imagen gigante y centrada */
+.botonera button[data-sound="mario"] {
+  background: #fff;
+  color: #222;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botonera button[data-sound="mario"]:hover {
+  background: #f4f6f8;
+}
+
+.botonera button[data-sound="mario"] img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+.footer {
+  text-align: center;
+  padding: 24px 0 12px 0;
+  color: #1a2233;
+  font-size: 1.1rem;
+  background: transparent;
+  letter-spacing: 1px;
+  opacity: 0.85;
+}
+

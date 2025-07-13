@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora - Proyecto 1</title>
+  <link rel="stylesheet" href="styles.css">
+  
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Juanse</div>
+    <ul class="nav-links">
+      <li><a href="./index.html">Inicio</a></li>
+    </ul>
+  </nav>
+  <div class="calc-container">
+    <h2 class="calc-title">Calculadora</h2>
+    <input type="text" id="calc-display" readonly>
+    <div class="calc-buttons">
+      <button>7</button><button>8</button><button>9</button><button data-op="divide">÷</button>
+      <button>4</button><button>5</button><button>6</button><button data-op="multiply">×</button>
+      <button>1</button><button>2</button><button>3</button><button data-op="subtract">-</button>
+      <button>0</button><button>.</button><button>=</button><button data-op="add">+</button>
+      <button id="calc-clear" style="grid-column: span 4;">C</button>
+    </div>
+    <a href="index.html" class="volver-btn">Volver al inicio</a>
+  </div>
+  <section id="projects" class="projects-section" style="display:none;">
+    <button id="inicio-btn" class="volver-btn" style="margin-bottom: 24px;">Inicio</button>
+    <h2>Mis Proyectos</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h3>Calculadora</h3>
+        <p>Calculadora para operaciones matemáticas simples.</p>
+      </div>
+      <div class="project-card">
+        <h3>Juego</h3>
+        <p>Entra y distensa la semana con este juego.</p>
+      </div>
+      <div class="project-card">
+        <h3>Botonera</h3>
+        <p>Botonera de Sonidos.</p>
+      </div>
+    </div>
+  </section>
+  <script>
+  // Calculadora funcional mejorada
+  const display = document.getElementById('calc-display');
+  const buttons = document.querySelectorAll('.calc-buttons button');
+  let current = '';
+  let resetNext = false;
+
+  function appendValue(val) {
+    if (resetNext) {
+      // Si el usuario ingresa un operador, continúa la operación con el resultado
+      if (/[+\-×÷]/.test(val)) {
+        resetNext = false;
+        current = display.value + val;
+      } else {
+        // Si ingresa un número, empieza una nueva operación
+        current = val;
+        resetNext = false;
+      }
+    } else {
+      // Evitar dos operadores seguidos (excepto negativo al principio)
+      if (/[+\-×÷.]$/.test(current) && /[+\-×÷.]/.test(val)) {
+        if (!(val === '-' && current.length === 0)) return;
+        if (current.length > 0 && val !== '-') {
+          current = current.slice(0, -1) + val;
+        } else {
+          current += val;
+        }
+      } else {
+        current += val;
+      }
+    }
+    display.value = current;
+  }
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function() {
+      const val = btn.textContent;
+      if (val === 'C') {
+        current = '';
+        display.value = '';
+        resetNext = false;
+      } else if (val === '=') {
+        try {
+          let expr = current.replace(/÷/g, '/').replace(/×/g, '*');
+          if (/^[\d\.\+\-\*\/\s]+$/.test(expr)) {
+            let result = eval(expr).toString();
+            display.value = result;
+            current = result;
+            resetNext = true;
+          } else {
+            display.value = 'Error';
+            current = '';
+            resetNext = true;
+          }
+        } catch {
+          display.value = 'Error';
+          current = '';
+          resetNext = true;
+        }
+      } else if (btn.hasAttribute('data-op')) {
+        let op = btn.getAttribute('data-op');
+        if (op === 'add') appendValue('+');
+        if (op === 'subtract') appendValue('-');
+        if (op === 'multiply') appendValue('×');
+        if (op === 'divide') appendValue('÷');
+      } else {
+        appendValue(val);
+      }
+    });
+  });
+</script>
+</body>
+</html>
