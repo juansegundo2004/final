@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería - Autos Clásicos Argentinos</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="pagina.html">Inicio</a></li>
+        <li><a href="historia.html">Historia</a></li>
+        <li><a href="modelos.html">Modelos</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="container">
+    <h1>Galería</h1>
+    <div class="galeria-modelos">
+      <button class="modelo-btn" onclick="mostrarGaleria('torino')">IKA Torino</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('falcon')">Ford Falcon</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('chevrolet400')">Chevrolet 400</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('fiat600')">Fiat 600</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('peugeot504')">Peugeot 504</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('renault12')">Renault 12</button>
+      <button class="modelo-btn" onclick="mostrarGaleria('renaultfuego')">Renault Fuego Coupé</button>
+    </div>
+    <div id="galeria-torino" class="galeria" style="display:none;">
+      <img src="fondos/torino.png" alt="IKA Torino 1">
+      <img src="fondos/torino 2.jpg" alt="IKA Torino 2">
+      <img src="fondos/torino 3.JPG" alt="IKA Torino 3">
+      <img src="fondos/torino 4.jpeg" alt="IKA Torino 4">
+      <img src="fondos/torino 1.jpg" alt="IKA Torino 5">
+    </div>
+    <div id="galeria-falcon" class="galeria" style="display:none;">
+      <img src="fondos/falcon.jpg" alt="Ford Falcon 1">
+      <img src="fondos/falcon2.png" alt="Ford Falcon 2">
+      <img src="fondos/ford3.jpg" alt="ford falcon 3">
+      <img src="fondos/ford4.jpg" alt="ford falcon 4">
+      <img src="fondos/ford5.jpg" alt="ford falcon 5">
+    </div>
+    <div id="galeria-chevrolet400" class="galeria" style="display:none;">
+      <img src="fondos/chevrolet1.jpg" alt="Chevrolet 400 1">
+      <img src="fondos/chevrolet2.webp" alt="Chevrolet 400 2">
+      <img src="fondos/chevrolet3.webp" alt="chevrolet 400 3">
+      <img src="fondos/chevrolet4.jpg" alt="chevrolet 400 4">
+      
+    </div>
+    <div id="galeria-fiat600" class="galeria" style="display:none;">
+      <img src="fondos/fiat1.webp" alt="fiat 600 1">
+      <img src="fondos/fiat2.jpg" alt="fiat 600 3">
+      <img src="fondos/fiat3.webp" alt="Fiat 600 2">
+      <img src="fondos/fiat4.jpg" alt="fiat 600 4">
+      <img src="fondos/fiat5.webp" alt="fiat 600 5">
+    </div>
+    <div id="galeria-peugeot504" class="galeria" style="display:none;">
+      <img src="fondos/peugeot1.jpg" alt="Peugeot 504 1">
+      <img src="fondos/peugeot2.jpg" alt="Peugeot 504 2">
+      <img src="fondos/peugeot3.jpg" alt="Peugeot 504 3">
+      <img src="fondos/peugeot4.jpg" alt="Peugeot 504 4">
+      
+    </div>
+    <div id="galeria-renault12" class="galeria" style="display:none;">
+      <img src="fondos/renaults1.jpg" alt="renault 12 1">
+      <img src="fondos/renaults2.jpg" alt="Renault 12 2">
+      <img src="fondos/renaults3.jpg" alt="Renault 12 3">
+      <img src="fondos/renaults4.jpg" alt="Renault 12 4"> 
+    </div>
+    <div id="galeria-renaultfuego" class="galeria" style="display:none;">
+      <img src="fondos/fuego1.jpg" alt="Renault Fuego Coupé 1">
+      <img src="fondos/fuego2.jpg" alt="Renault Fuego Coupé 2">
+      <img src="fondos/fuego3.jpg" alt="Renault Fuego Coupé 3">
+      <img src="fondos/fuego4.webp" alt="Renault Fuego Coupé 4">
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2025 Fierros eran los de antes. Todos los derechos reservados.</p>
+  </footer>
+  <script>
+    function mostrarGaleria(modelo) {
+      const modelos = [
+        'torino', 'falcon', 'chevrolet400', 'fiat600', 'peugeot504', 'renault12', 'renaultfuego'
+      ];
+      modelos.forEach(m => {
+        document.getElementById('galeria-' + m).style.display = 'none';
+      });
+      document.getElementById('galeria-' + modelo).style.display = 'grid';
+    }
+  </script>
+</body>
+</html>

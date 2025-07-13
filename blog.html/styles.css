@@ -1,0 +1,594 @@
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Cinzel', serif;
+  /* height: 100vh; */   /* Elimina o comenta esta línea */
+  /* width: 100vw; */    /* Elimina o comenta esta línea */
+  /* overflow: hidden; */ /* Elimina o comenta esta línea */
+  color: #111; /* Texto negro */
+  text-shadow: 2px 2px 8px #fff, 0 1px 0 #bbb;
+}
+
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1c1c1c;
+  color: #f4f4f4;
+  background-image: url(fondos/clasico\ argentino.jpg);
+  background-size: 100vw auto;      /* La imagen siempre ocupa el ancho de la ventana */
+  background-position: center top;  /* Centrada arriba */
+  background-repeat: no-repeat;
+}
+
+
+
+/* Video de fondo */
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Capa oscura encima del video */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Contenedor del contenido */
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* Centra verticalmente */
+  align-items: center;       /* Centra horizontalmente */
+  /* Sin fondo ni borde */
+  box-shadow: none;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0 auto;
+  width: auto;
+  max-width: none;
+}
+
+/* Solo aplica el fondo translúcido si tiene la clase 'translucido' */
+.container.translucido {
+  min-height: 60vh;
+  width: 95vw;
+  max-width: 1200px;
+  margin: 24px auto 0 auto;
+  padding: 18px 8px;
+  background: rgba(0,0,0,0.65); /* Fondo translúcido */
+  border-radius: 18px;
+  box-shadow: 0 8px 32px #000a;
+  position: relative;
+  z-index: 2;
+}
+
+/* Fondo más claro y translúcido para el texto principal */
+.texto-contraste {
+  background: rgba(255,255,255,0.18); /* Más claro y translúcido */
+  padding: 12px 8px 24px 8px; /* Aumenta el padding inferior */
+  border-radius: 12px;
+  margin-bottom: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 0.98rem;
+  line-height: 1.45;
+  max-height: 75vh;      /* Altura máxima del recuadro */
+  overflow-y: auto;      /* Scroll solo dentro del recuadro */
+}
+
+/* Avatar circular */
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+}
+
+/* Título */
+h1 {
+  margin: 15px 0 5px;
+  font-size: 24px;
+  color: #c0392b; /* Rojo clásico fuerte */
+  text-shadow: 2px 2px 8px #fff, 0 2px 0 #000;
+  text-align: center;
+  color: #fff; /* Blanco para mejor contraste con fondo oscuro */
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 12px #c0392b, 0 2px 0 #000, 2px 2px 8px #000;
+}
+
+.titulo-principal {
+  margin-top: 12px;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 2.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 4px 4px 16px #c0392b, 0 2px 0 #000, 2px 2px 8px #000;
+}
+
+/* Nombre de usuario */
+p {
+  margin-bottom: 30px;
+  font-style: italic;
+  color: #111 !important; /* Fuerza el texto negro en todos los <p> */
+  text-shadow: 1px 1px 4px #fff;
+  color: #000 !important;           /* Negro puro */
+  font-weight: 700;                 /* Más grueso */
+  font-size: 1.15rem;               /* Un poco más grande */
+  text-shadow: 1px 1px 2px #fff, 0 1px 0 #bbb; /* Sombra clara muy sutil */
+  letter-spacing: 0.5px;            /* Mejor lectura */
+}
+
+/* Íconos sociales */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.icon {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  font-size: 20px;
+  transition: transform 0.3s, background-color 0.3s;
+  border: 1px solid #00ffff33;
+}
+
+.icon:hover {
+  background-color: #00ffff;
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+}
+
+/* Enlaces secundarios (Link 1, 2, 3) */
+.links-secundarios {
+  margin-top: 40px;
+}
+
+.links-secundarios a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  text-decoration: none;
+  margin: 10px auto;
+  padding: 12px 20px;
+  width: 260px;
+  border-radius: 12px;
+  font-size: 16px;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  border: 1px solid #00ffff33;
+}
+
+.links-secundarios a i {
+  margin-right: 10px;
+}
+
+.links-secundarios a:hover {
+  background: #00ffff;
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 0 12px #00ffff, 0 0 25px #00ffff;
+}
+
+/* Estilo general */
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #1c1c1c;
+  color: #f4f4f4;
+  background-image: url(fondos/clasico\ argentino.jpg);         /* Cambia este valor para hacerla más chica o más grande */
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+header {
+  background-color: #2e2e2e;
+  padding: 20px;
+  text-align: center;
+  border-bottom: 5px solid #c0392b;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #e74c3c;
+  text-shadow: 2px 2px #000;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+
+nav li {
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #111;
+  text-shadow: 1px 1px 4px #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #c0392b;
+  color: #fff !important;
+  font-size: 0.95rem; /* Más chico */
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 1px 1px 10px #0006;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-align: center;
+  letter-spacing: 1px;
+  min-width: 120px;
+}
+
+nav a:hover {
+  color: #e74c3c;
+  text-shadow: 2px 2px 8px #fff;
+}
+
+nav ul li a:hover {
+  background: #e67e22;
+  color: #111 !important;
+  transform: scale(1.05);
+}
+
+main {
+  width: 100vw;
+  max-width: none;
+  max-height: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0 0 0; /* Espacio arriba */
+  overflow-y: auto;
+  position: relative;
+  z-index: 1;
+  /* height: 100vh; */           /* Elimina o comenta esta línea */
+  /* justify-content: center; */ /* Elimina o comenta esta línea */
+}
+
+h2 {
+  color: #e67e22;
+  border-bottom: 2px solid #e67e22;
+  padding-bottom: 5px;
+  margin-top: 40px;
+}
+
+ul li a {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+  color: #e74c3c;
+}
+
+.galeria {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.galeria img {
+  width: 120px;
+  max-width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Responsive: Ajustes generales */
+.container, .container.translucido {
+  width: 98vw;
+  max-width: 1200px;
+  padding: 10px 2vw;
+  box-sizing: border-box;
+}
+
+.galeria-modelos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.modelo-btn {
+  min-width: 120px;
+  font-size: 1rem;
+  padding: 10px 16px;
+  margin: 4px;
+}
+
+/* Galería de imágenes responsive */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Nav responsive */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  justify-content: center;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+/* Footer responsive */
+footer {
+  font-size: 1rem;
+  padding: 12px 4vw;
+  word-break: break-word;
+}
+
+/* Títulos adaptables */
+h1, h2, h3 {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  text-align: center;
+}
+
+/* Media queries para pantallas chicas */
+@media (max-width: 600px) {
+  .container, .container.translucido {
+    padding: 6px 2vw;
+  }
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+  .modelo-btn {
+    width: 100%;
+    min-width: unset;
+    font-size: 0.98rem;
+    padding: 10px 0;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+footer {
+  background-color: #2e2e2e;
+  text-align: center;
+  padding: 15px;
+  border-top: 3px solid #c0392b;
+  font-size: 0.9rem;
+  color: #bdc3c7;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Permanent+Marker&family=Staatliches&display=swap');
+
+h1, h2, h3 {
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #000; /* Negro puro para títulos */
+  text-shadow: 2px 2px 6px #fff, 0 2px 0 #c0392b;
+}
+
+p, li, span, .links-secundarios a {
+  color: #000; /* Negro puro */
+  text-shadow: 1px 1px 2px #c0c0c0; /* Sombra gris sutil para contraste */
+}
+
+/* Mejora la visibilidad del texto en la página de historia */
+body, .container, main, p, h1, h2, h3 {
+  color: #fff !important;
+  text-shadow: 2px 2px 8px #000, 0 2px 0 #222;
+}
+
+p {
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  line-height: 1.6;
+}
+
+/* Botón base */
+.modelo-btn {
+  display: inline-block;
+  background: #111;
+  color: #fff !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 12px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  margin: 8px 0;
+  box-shadow: 0 2px 12px #000a;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  text-align: center;
+  letter-spacing: 1px;
+  border: 2px solid #ffe066;
+  text-shadow: 2px 2px 8px #000, 0 2px 0 #222;
+}
+
+.modelo-btn:hover {
+  background: #ffe066;
+  color: #111 !important;
+  border-color: #c0392b;
+  transform: scale(1.05);
+}
+
+/* Tipografía de los 60s: Orbitron */
+.modelo-60s {
+  font-family: 'Orbitron', Arial, sans-serif;
+  background: #222;
+  border-color: #00eaff;
+}
+
+/* Tipografía de los 70s: Staatliches */
+.modelo-70s {
+  font-family: 'Staatliches', Arial, sans-serif;
+  background: #2e2e2e;
+  border-color: #e67e22;
+}
+
+
+
+.volver-linktree {
+  display: inline-block;
+  margin: 24px 0 0 0;
+  padding: 10px 22px;
+  background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 2px 12px #00c6ff44;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
+}
+.volver-linktree:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 6px 24px #00c6ff88;
+  background: linear-gradient(90deg, #0072ff 0%, #00c6ff 100%);
+}
+
+.btn-linktree {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  padding: 10px 20px;
+  background-color: #007bff; /* Ajusta según tu color de botones */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.2s;
+  z-index: 1000;
+}
+.btn-linktree:hover {
+  background-color: #c0392b; /* Ajusta según tu hover */
+}
+
+.volver-linktree-fijo {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  z-index: 2000;
+  background: #c0392b;
+  color: #fff !important;
+  font-size: 1rem;
+  font-family: 'Cinzel', serif;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 1px 1px 10px #0006;
+  border: 2px solid #ffe066;
+  letter-spacing: 1px;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.volver-linktree-fijo:hover {
+  background: #e67e22;
+  color: #111 !important;
+  transform: scale(1.05);
+}
+
+
+
+
+
+
+
+
